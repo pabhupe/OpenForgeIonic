@@ -21,7 +21,6 @@ export class HomePage {
     this._userService.getUsers(0)
     .subscribe(users=>{
       this.usersc = users
-      console.log("Entro Aqui",this.usersc)
     })
   }
 

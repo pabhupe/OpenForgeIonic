@@ -8,7 +8,7 @@
 
 <ion-content>
   <ion-list *ngFor="let u of usersc">
-    <ion-item>
+    <ion-item routerLink="/profile/{{u.login}}">
       <ion-avatar>
           <img [src]="u.avatar_url">
       </ion-avatar>

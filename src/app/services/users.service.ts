@@ -13,4 +13,8 @@ export class UsersService {
   getUsers(sinceU){
     return this.http.get<any>(`https://api.github.com/users?since=${sinceU}`)
   }
+
+  getUser(username){
+    return this.http.get<any>(`https://api.github.com/users/${username}`)
+  }
 }
