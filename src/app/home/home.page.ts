@@ -1,7 +1,11 @@
 import { Component,OnInit,ViewChild  } from '@angular/core';
 import {UsersService} from '../services/users.service'
-import { usersReducer } from '../reducers/users.reducer';
+//import { usersReducer } from '../reducers/users.reducer';
 import { IonInfiniteScroll } from '@ionic/angular';
+//import { Store, select } from "@ngrx/store";
+//import {UsersAction}from 'src/app/actions/users.action'
+import {User} from 'src/app/models/user.model'
+import { Observable } from "rxjs";
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -11,17 +15,23 @@ export class HomePage {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
   since=0
   usersc;
+
+  public users: Observable<User[]>;
+ 
   constructor(private _userService:UsersService) {}
   ngOnInit() {
     this.getUsersF()
+    //this.usersc=this.store.select(state => state.Users)
+    console.log("users"+this.users)
   }
 
   getUsersF(){
-    console.log(this.since)
     this._userService.getUsers(0)
     .subscribe(users=>{
       this.usersc = users
+      console.log(this.users)
     })
+
   }
 
   loadData(event){
@@ -43,6 +53,7 @@ export class HomePage {
     }
     //this.toggleInfiniteScroll()
   }
+
 
   toggleInfiniteScroll() {
     this.infiniteScroll.disabled = !this.infiniteScroll.disabled;

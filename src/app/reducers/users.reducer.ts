@@ -1,12 +1,30 @@
-import {Action} from '@ngrx/store'
-import {GETUSERS} from 'src/app/actions/users.action'
-import { HttpClient,HttpHeaders, HttpErrorResponse} from '@angular/common/http';
+/*import {ActionReducer,Action} from '@ngrx/store'
+import { createSelector } from "@ngrx/store";
+import {UsersAction} from 'src/app/actions/users.action'
+import {UsersService} from '../services/users.service'
+import {User} from 'src/app/models/user.model'
+import * as fromActions from 'src/app/actions/users.action'
 
-export function usersReducer(state:number = 10,action:Action){
+const intitialState: User[] = []
+
+export function usersReducer(state=intitialState,action:any){
+  
   switch(action.type){
-      case GETUSERS:
-          return 
+      case 'LOAD_USERS_SUCCESS':{
+        return {data:[...state,action.payload]}
+      }
       default:
-          return state;
+         return state
   }
+  
 }
+export const selectState = state => state.app;
+
+
+
+
+
+export const selectUser = createSelector(
+  selectState,
+  (state: any) => state.currentUser
+);*/
